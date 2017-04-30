@@ -79,6 +79,11 @@ public class SecretaryEditInformationFragment extends Fragment {
         mPassword .setText(loginFragment.sharedPreferences.getString("password",""));
 
 
+        mDefaultArray=new String[]{loginFragment.sharedPreferences.getString("manager_name","")};
+        mAdapter=new ArrayAdapter(getActivity() , android.R.layout.simple_list_item_1,mDefaultArray);
+        mManagerName.setAdapter(mAdapter);
+
+
 
         mWebServices.get_managers(getActivity(), new request_interface() {
             @Override
@@ -125,7 +130,6 @@ public class SecretaryEditInformationFragment extends Fragment {
                         Toast.makeText(getActivity(), ""+mManagerName.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
                         Toast.makeText(getActivity(), "updated successfully.", Toast.LENGTH_SHORT).show();
-
                         // refresh page
                         SecretaryEditInformationFragment secretaryEditInformationFragment=new SecretaryEditInformationFragment();
                         FragmentManager fm =getActivity().getSupportFragmentManager();
