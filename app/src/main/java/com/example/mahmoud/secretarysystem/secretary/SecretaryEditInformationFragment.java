@@ -79,10 +79,10 @@ public class SecretaryEditInformationFragment extends Fragment {
         mPassword .setText(loginFragment.sharedPreferences.getString("password",""));
 
 
-        mDefaultArray=new String[]{loginFragment.sharedPreferences.getString("manager_name","")};
+        mDefaultArray=new String[]{};
         mAdapter=new ArrayAdapter(getActivity() , android.R.layout.simple_list_item_1,mDefaultArray);
         mManagerName.setAdapter(mAdapter);
-
+        mFirstNameManagerBuffer.append(loginFragment.sharedPreferences.getString("manager_name","")+":");
 
 
         mWebServices.get_managers(getActivity(), new request_interface() {
