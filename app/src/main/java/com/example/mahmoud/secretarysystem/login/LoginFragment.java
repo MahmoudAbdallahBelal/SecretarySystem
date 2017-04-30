@@ -1,5 +1,6 @@
 package com.example.mahmoud.secretarysystem.login;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mahmoud.secretarysystem.R;
+import com.example.mahmoud.secretarysystem.secretary.SecretaryProfileActivity;
 import com.example.mahmoud.secretarysystem.web.WebServices;
 import com.example.mahmoud.secretarysystem.web.request_interface;
 import com.labo.kaji.fragmentanimations.CubeAnimation;
@@ -40,6 +42,7 @@ public class LoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -121,9 +124,14 @@ public class LoginFragment extends Fragment {
 
                     editor.commit();
                     if (user_type.equals("secretary")) {
+
+                        startActivity(new Intent(getActivity(), SecretaryProfileActivity.class));
+
                     }
                     else if (user_type.equals("manager")) {
                     }
+
+
 
 
 

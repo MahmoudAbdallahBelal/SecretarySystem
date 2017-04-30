@@ -24,17 +24,16 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:design:25.3.1'
     // for circle image
+    // for fragment Animation
+    
+
+    // for Volley
+    compile 'com.android.support:design:25.3.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-// for fragment Animation
     compile 'com.labo.kaji:fragmentanimations:0.1.1'
-
- // for Volley
     compile 'com.mcxiaoke.volley:library:1.0.18'
-
-
-
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
 }

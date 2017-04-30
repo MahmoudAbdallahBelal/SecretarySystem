@@ -51,8 +51,8 @@ public class WebServices {
     public static String TAG = "tag";
 
     public static String USER_LOGIN = "login_user";
-
-
+    public static String GET_MANAGERS = "get_managers";
+    public static String UPDATE_SECRETARY = "update_secretary";
 
 
     private RequestQueue queue;
@@ -95,9 +95,68 @@ public class WebServices {
     }
 
 
-    //---------------------------------------------------------------------------------------------------//
+    //------ 2- get_managers ---------------------------------------------------------------------------------------------//
+    public void get_managers(final Activity activity,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(TAG, GET_MANAGERS);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
 
 
+//---------------------------------------------------------------------------------------------//
+public void update_secretary(final Activity activity,final  int id ,final String password , final  String manager_name,final request_interface request_interface)
+{
+    queue = Volley.newRequestQueue(activity);
+    final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+        @Override
+        public void onResponse(String response) {
+            request_interface.onResponse(response);
+        }
+
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+            request_interface.onError();
+        }
+    }) {
+
+        protected java.util.Map<String, String> getParams() throws AuthFailureError {
+            java.util.Map<String, String> params = new HashMap<String, String>();
+
+            params.put(ID, ""+id);
+            params.put(PASSWORD, password);
+            params.put(MANAGER_NAME, manager_name);
+            params.put(TAG, UPDATE_SECRETARY);
+            return params;
+        }
+
+    };
+    queue.add(request);
+}
 
 
 
