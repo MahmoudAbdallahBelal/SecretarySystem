@@ -22,6 +22,10 @@
         <activity
             android:name=".secretary.SecretaryProfileActivity"
             android:label="@string/title_activity_secretary_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".manager.mng_Home"
+            android:label="@string/title_activity_mng__home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
