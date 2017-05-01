@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_userName"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:focusableInTouchMode="false"
+                    android:textColorHint="@color/colorRed"
+                    android:id="@+id/Edit_Sec_Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="date"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_password"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <EditText
+
+                    android:textColorHint="@color/colorRed"
+            android:focusableInTouchMode="false"
+                    android:id="@+id/Edit_Sec_Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="time"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_confirmPassword"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:textColorHint="@color/colorRed"
+
+                    android:id="@+id/Spinner_Sec_priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="high"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_Email"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textColorHint="@color/colorRed"
+
+                    android:id="@+id/Edit_Sec_Drsc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_Phone"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:textColorHint="@color/colorRed"
+
+                    android:id="@+id/Spinner_Sec_Clients"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="client"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:textColorHint="@color/colorRed"
+                android:layout_marginTop="10dp"
+                android:id="@+id/Spinner_Sec_Managers"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="50dp"
+                android:hint="manager"
+                />
+
+            <Spinner
+                android:textColorHint="@color/colorRed"
+                android:layout_marginTop="10dp"
+                android:id="@+id/Spinner_Sec_Secretaries"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="50dp"
+                android:hint="manager"
+                />
+
+            <Button
+                android:id="@+id/Button_Sec_AddAppointment"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:text="add appointment"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/button_style"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
