@@ -53,7 +53,15 @@ public class WebServices {
     public static String USER_LOGIN = "login_user";
     public static String GET_MANAGERS = "get_managers";
     public static String UPDATE_SECRETARY = "update_secretary";
+    public static String GET_SECRETARY= "get_secretary";
+    public static String GET_CLIENR= "get_clients";
+    public static String ADD_APPOINTS= "add_appoint";
+    public static String GET1_APPOINTS= "get_appoints";
 
+    public static String ADD_TASK= "add_task";
+    public static String GET1_TASKS= "get_tasks";
+    public static String UPDATE_TASK= "update_task";
+    public static String DELETE_TASK= "delete_task";
 
     private RequestQueue queue;
     private String url = "http://manager-secretary.000webhostapp.com/uploads/re_tags.php";
@@ -157,7 +165,267 @@ public void update_secretary(final Activity activity,final  int id ,final String
     };
     queue.add(request);
 }
+    public void get_secretary(final Activity activity,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(TAG, GET_SECRETARY);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
+
+//==================================================================================================//
+public void get_clients(final Activity activity,final request_interface request_interface)
+{
+    queue = Volley.newRequestQueue(activity);
+    final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+        @Override
+        public void onResponse(String response) {
+            request_interface.onResponse(response);
+        }
+
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+            request_interface.onError();
+        }
+    }) {
+
+        protected java.util.Map<String, String> getParams() throws AuthFailureError {
+            java.util.Map<String, String> params = new HashMap<String, String>();
+            params.put(TAG, GET_CLIENR);
+            return params;
+        }
+
+    };
+    queue.add(request);
+}
+//====================================================================================================//
+public void addAppointments(final Activity activity, final String date, final String time , final String priority , final String description , final String client , final String manager , final String secretary, final request_interface request_interface)
+{
+    queue = Volley.newRequestQueue(activity);
+    final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+        @Override
+        public void onResponse(String response) {
+            request_interface.onResponse(response);
+        }
+
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+
+            request_interface.onError();
+        }
+    }) {
+
+        protected java.util.Map<String, String> getParams() throws AuthFailureError {
+            java.util.Map<String, String> params = new HashMap<String, String>();
+            params.put(DATE, date);
+            params.put(TIME, time);
+            params.put(PRIORITY, priority);
+            params.put(DESCRIPTION, description);
+            params.put(CLIENT, client);
+            params.put(MANAGER, manager);
+            params.put(SECRETARY, secretary);
+
+            params.put(TAG, ADD_APPOINTS);
+            return params;
+        }
+
+    };
+    queue.add(request);
+}
+    //------  ---------------------------------------------------------------------------------------------//
+    public void getAppoints(final Activity activity,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(TAG, GET1_APPOINTS);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
+//=============================================================================================================//
+
+    //====================================================================================================//
+    public void addTask(final Activity activity, final String date, final String description , final String notes , final String manager , final String secretary, final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(DATE, date);
+                params.put(DESCRIPTION, description);
+                params.put(NOTES, notes);
+                params.put(MANAGER, manager);
+                params.put(SECRETARY, secretary);
+
+                params.put(TAG, ADD_TASK);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
 
 
+    //=====================================================================================//
+    public void getTasks(final Activity activity,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+                params.put(TAG, GET1_TASKS);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
+
+//===================================================================================//
+
+    public void updateTask(final Activity activity,final  int id ,final String date , final  String description,final String notes ,final  String manager ,final String secretary,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(ID, ""+id);
+                params.put(DATE, date);
+                params.put(DESCRIPTION, description);
+                params.put(NOTES, notes);
+                params.put(MANAGER, manager);
+                params.put(SECRETARY, secretary);
+
+                params.put(TAG, UPDATE_TASK);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
+
+
+
+
+
+
+
+//====================================================================//
+
+    public void deleteTask(final Activity activity,final  int id,final request_interface request_interface)
+    {
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(ID, ""+id);
+                params.put(TAG, DELETE_TASK);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
 
 }

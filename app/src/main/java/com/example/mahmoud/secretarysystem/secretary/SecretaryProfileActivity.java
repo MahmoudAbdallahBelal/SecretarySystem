@@ -24,6 +24,8 @@ public class SecretaryProfileActivity extends AppCompatActivity
 
     private  TextView mFullName,mUserType;
     private LoginFragment loginFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,14 +119,44 @@ public class SecretaryProfileActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+
+            SecretaryEditInformationFragment secretaryEditInformationFragment=new SecretaryEditInformationFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_secretary_profile,secretaryEditInformationFragment);
+            ft.commit();
+
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
+            AddAppointmentFragment addAppointmentFragment=new AddAppointmentFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_secretary_profile,addAppointmentFragment);
+            ft.commit();
+
+
         } else if (id == R.id.nav_slideshow) {
 
+            ShowAppointmentsFragment showAppointmentsFragment=new ShowAppointmentsFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_secretary_profile,showAppointmentsFragment);
+            ft.commit();
+
         } else if (id == R.id.nav_manage) {
+            AddTaskFragment addTaskFragment=new AddTaskFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_secretary_profile,addTaskFragment);
+            ft.commit();
 
         } else if (id == R.id.nav_share) {
+            ShowTasksFragment showTasksFragment=new ShowTasksFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_secretary_profile,showTasksFragment);
+            ft.commit();
 
         } else if (id == R.id.nav_send) {
 

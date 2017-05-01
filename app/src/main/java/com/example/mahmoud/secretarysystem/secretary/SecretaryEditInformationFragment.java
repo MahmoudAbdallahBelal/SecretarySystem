@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -79,42 +80,51 @@ public class SecretaryEditInformationFragment extends Fragment {
         mPassword .setText(loginFragment.sharedPreferences.getString("password",""));
 
 
-        mDefaultArray=new String[]{};
+        mDefaultArray=new String[]{loginFragment.sharedPreferences.getString("manager_name","")};
         mAdapter=new ArrayAdapter(getActivity() , android.R.layout.simple_list_item_1,mDefaultArray);
         mManagerName.setAdapter(mAdapter);
-        mFirstNameManagerBuffer.append(loginFragment.sharedPreferences.getString("manager_name","")+":");
 
 
-        mWebServices.get_managers(getActivity(), new request_interface() {
-            @Override
-            public void onResponse(String response) {
-                JSONObject jsonResponse = null;
-                try {
 
-                    jsonResponse = new JSONObject(response);
-                    JSONArray jsonArray = jsonResponse.getJSONArray("managers");
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject search_object = jsonArray.getJSONObject(i);
-                        mFirstNameManagerBuffer.append(search_object.getString("first_name") + " "+search_object.getString("last_name") + ":");
+
+                mWebServices.get_managers(getActivity(), new request_interface() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonResponse = null;
+                        try {
+
+                            jsonResponse = new JSONObject(response);
+                            JSONArray jsonArray = jsonResponse.getJSONArray("managers");
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject search_object = jsonArray.getJSONObject(i);
+                                mFirstNameManagerBuffer.append(search_object.getString("first_name") + " "+search_object.getString("last_name") + ":");
+
+
+
+
+                            }
+
+                            mFirstNameManagers = mFirstNameManagerBuffer.toString().split(":");
+                        }
+
+                        catch (JSONException e) {
+                            Toast.makeText(getActivity(), "error Server.", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                        mAdapter=new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,mFirstNameManagers);
+                        mManagerName.setAdapter(mAdapter);
+
                     }
 
-                    mFirstNameManagers = mFirstNameManagerBuffer.toString().split(":");
-                }
-                catch (JSONException e) {
-                    Toast.makeText(getActivity(), "error Server.", Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void onError() {
+                        Toast.makeText(getActivity(), "error Server.", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                mAdapter=new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,mFirstNameManagers);
-                mManagerName.setAdapter(mAdapter);
-
-            }
-
-            @Override
-            public void onError() {
-                Toast.makeText(getActivity(), "error Server.", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
 
