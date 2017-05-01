@@ -1,4 +1,4 @@
-package com.example.mahmoud.secretarysystem.secretary;
+package com.example.mahmoud.secretarysystem.manager;
 
 
 import android.app.Dialog;
@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.mahmoud.secretarysystem.R;
+import com.example.mahmoud.secretarysystem.secretary.CardViewAdapterSecAppointments;
 import com.example.mahmoud.secretarysystem.web.WebServices;
 import com.example.mahmoud.secretarysystem.web.request_interface;
 
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShowAppointmentsFragment extends Fragment {
+public class ShowAppointmentsManagerFragment extends Fragment {
 
 
    private WebServices mWebServices;

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mahmoud.secretarysystem.R;
+import com.example.mahmoud.secretarysystem.manager.mng_Home;
 import com.example.mahmoud.secretarysystem.secretary.SecretaryProfileActivity;
 import com.example.mahmoud.secretarysystem.web.WebServices;
 import com.example.mahmoud.secretarysystem.web.request_interface;
@@ -131,8 +132,8 @@ public class LoginFragment extends Fragment {
                     else if (user_type.equals("manager")) {
                     }
 
-
-
+                    Intent i=new Intent(getActivity(),mng_Home.class);
+                    startActivity(i);
 
 
                 } else if (login_response.equals("incorrect password")) {

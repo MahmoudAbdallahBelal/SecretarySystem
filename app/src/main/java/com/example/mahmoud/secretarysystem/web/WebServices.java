@@ -57,6 +57,8 @@ public class WebServices {
     public static String GET_CLIENR= "get_clients";
     public static String ADD_APPOINTS= "add_appoint";
     public static String GET1_APPOINTS= "get_appoints";
+    public static String UPDATE_MANAGER= "update_manager";
+
 
     public static String ADD_TASK= "add_task";
     public static String GET1_TASKS= "get_tasks";
@@ -421,6 +423,37 @@ public void addAppointments(final Activity activity, final String date, final St
 
                 params.put(ID, ""+id);
                 params.put(TAG, DELETE_TASK);
+                return params;
+            }
+
+        };
+        queue.add(request);
+    }
+
+    public void setUpdateManager(Activity activity, final  int id, final String password, final request_interface request_interface){
+
+        queue = Volley.newRequestQueue(activity);
+        final StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                request_interface.onError();
+            }
+        }) {
+
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(ID, ""+id);
+                params.put(PASSWORD,password);
+                params.put(TAG, UPDATE_MANAGER);
                 return params;
             }
 

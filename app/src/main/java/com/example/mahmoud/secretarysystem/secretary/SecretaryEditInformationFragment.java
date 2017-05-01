@@ -126,10 +126,6 @@ public class SecretaryEditInformationFragment extends Fragment {
                 });
 
 
-
-
-
-
         mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
