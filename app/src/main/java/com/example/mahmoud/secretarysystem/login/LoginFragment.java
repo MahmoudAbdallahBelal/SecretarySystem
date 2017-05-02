@@ -55,6 +55,7 @@ public class LoginFragment extends Fragment {
         editor = sharedPreferences.edit();
 
 
+
         web= new WebServices();
 
 
@@ -85,9 +86,6 @@ public class LoginFragment extends Fragment {
 
         return v;
     }
-
-
-
 
 
 
